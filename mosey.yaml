@@ -1,0 +1,55 @@
+#-----------------------------------------------------------------------------
+#  A limechat theme by Tad Thorley
+#-----------------------------------------------------------------------------
+  
+log-view:
+  nickname-format: "%n"
+  scroller-highlight-color: "#666"
+input-text:
+  font-family: "Lucida Grande"
+  font-size: 12.0
+  background-color: "#FFF"
+  color: "#000"
+  selected:
+    background-color: "#FFF"
+member-list:
+  font-family: 'Lucida Grande'
+  font-size: 12.0
+  color: "#333"
+  background-color: "#E3E9EF"
+  operator:
+    font-weight: "bold"
+  selected:
+    color: "#FFF"
+    background:
+      # gradient
+      top-line-color: "#999"
+      bottom-line-color: "#666"
+      top-color: "#999"
+      bottom-color: "#666"
+server-tree:
+  font-family: 'Lucida Grande'
+  font-size: 12.0
+  background-color: "#E3E9EF"
+  highlight:
+    color: "#286FCE"
+  newtalk:
+    font-weight: "bold"
+  unread:
+    font-weight: "bold"
+  normal:
+    active:
+      font-style: "normal"
+    inactive:
+      font-style: "italic"
+  selected:
+    active:
+      color: "#FFF"
+    inactive:
+      font-style: "italic"
+    background:
+      # gradient
+      top-line-color: "#999"
+      bottom-line-color: "#666"
+      top-color: "#999"
+      bottom-color: "#666"

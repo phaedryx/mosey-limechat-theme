@@ -1,0 +1,119 @@
+/*-----------------------------------------------------------------------------
+  A limechat theme by Tad Thorley
+-----------------------------------------------------------------------------*/
+
+html {
+  font-family: "Lucida Grande", sans-serif;
+  font-size: 9pt;
+  background-color: #FFF;
+  color: black;
+  word-wrap: break-word;
+  margin: 0;
+  padding: 0;
+}
+
+body { margin: 0; padding: 0; }
+
+/* the html tag has these classes and attributes too */
+body.normal { color: #333;}
+body.console {}
+body[type=channel] {}
+body[type=talk] {}
+body[type=console] {}
+body[channelname=#limechat] {}
+
+hr { margin: 0.5em 2em; }
+a {
+  color: #1A5B93;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* lines */
+.line { 
+  border-left: 8px solid #CCC; 
+  border-right: 8px solid #CCC;
+}
+.line[alternate=even] {}
+.line[alternate=odd] {}
+.line[type=action] {
+  font-style: italic;
+  font-weight: bold;
+  color: #666;
+}
+.line[type=action] .sender:before {
+  content: ""
+}
+.line[highlight=true] {
+  border-left: 8px solid #666;
+  border-right: 8px solid #666;
+}
+.message {
+  margin-left: 95px;
+  margin-right: 50px;
+  display: block;
+}
+.url { word-break: break-all; }
+.address { 
+  text-decoration: underline; 
+  word-break: break-all; 
+}
+.highlight {
+  font-weight: bold;
+  color: #1A5B93;
+}
+.event {
+  color: #666;
+}
+.event .message {
+  color: #666;
+}
+.time {
+  float: right;
+  text-align: left;
+  width: 40px;
+	color: #666;
+}
+
+/* nickname for text messages */
+body.normal .sender {
+  overflow: hidden;
+  width: 85px;
+  padding-left: 5px;
+  padding-right: 5px;
+  float: left;
+  text-align: right;
+  font-weight: bold;
+}
+.sender[type=myself] {
+  color: #F18909;
+}
+.sender[type=normal] { 
+  color: #679F41;
+}
+.duptime {
+  display: none;
+}
+
+body.console {
+  font-family: "Meslo", "Menlo", "Courier", monospace;
+  padding: 0px 12px;
+}
+body.console .line {
+  border: none;
+  padding: 0;
+}
+body.console .sender {
+  padding: 0;
+  margin-right: 0.5em;
+}
+body.console .message {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+body.console .event{
+  padding: 0;
+}
