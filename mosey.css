@@ -52,7 +52,7 @@ a:hover {
   border-right: 5px solid #666;
 }
 .message {
-  margin-left: 95px;
+  margin-left: 98px;
   margin-right: 50px;
   display: block;
 }
@@ -77,10 +77,13 @@ a:hover {
   width: 40px;
 	color: #666;
 }
-
+.duplicate {
+  display: none;
+}
 /* nickname for text messages */
 body.normal .sender {
   overflow: hidden;
+  word-wrap: normal;
   width: 85px;
   padding-left: 5px;
   padding-right: 5px;
@@ -93,9 +96,6 @@ body.normal .sender {
 }
 .sender[type=normal] { 
   color: #679F41;
-}
-.duptime {
-  display: none;
 }
 
 body.console {
@@ -117,4 +117,10 @@ body.console .message {
 }
 body.console .event{
   padding: 0;
+}
+#topic {
+  background-color: #F00;
+  padding: 2px 0;
+  position: fixed;
+  top: 0;
 }

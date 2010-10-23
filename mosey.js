@@ -2,12 +2,17 @@
   A limechat theme by Tad Thorley
 -----------------------------------------------------------------------------*/
 
+function markDuplicateTimestamps(node) {
+  var prev_time = node.previousSibling.childNodes[0];
+  var curr_time = node.childNodes[0];
+  if(prev_time.innerHTML == curr_time.innerHTML) { 
+    curr_time.className += " duplicate";
+  }  
+}
+
 function processNode(ev) {
   var inserted_node = ev.target;
-  var prev_time = inserted_node.previousSibling.getElementsByClassName('time')[0];
-  var curr_time = inserted_node.getElementsByClassName('time')[0];
-  //TODO: debug this
-  if(prev_time.innerText == curr_time.innerText) { curr_time.className += " duptime"; }
+  markDuplicateTimestamps(inserted_node);
 }
 
 document.addEventListener("DOMNodeInserted", processNode, false);
