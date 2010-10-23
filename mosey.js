@@ -6,7 +6,7 @@ function markDuplicateTimestamps(node) {
   var prev_time = node.previousSibling.childNodes[0];
   var curr_time = node.childNodes[0];
   if(prev_time.innerHTML == curr_time.innerHTML) { 
-    curr_time.className += " duplicate";
+    curr_time.className += " duptime";
   }  
 }
 
