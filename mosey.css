@@ -16,7 +16,6 @@ body { margin: 0; padding: 0; }
 
 /* the html tag has these classes and attributes too */
 body.normal { color: #333; margin-top: 20px;}
-body.console {}
 body[type=channel] {}
 body[type=talk] {}
 body[type=console] {}
@@ -101,19 +100,31 @@ body.normal .sender {
 body.console {
   font-family: "Meslo", "Menlo", "Courier", monospace;
   padding: 0px 12px;
+  background-color: #222;
+}
+body.console a {
+  color: #CC7833;
 }
 body.console .line {
   border: none;
   padding: 0;
 }
+body.console .line[highlight=true] {
+  color: #FFD36A;
+}
+body.console .place {
+  color: #74ABCF;
+}
 body.console .sender {
   padding: 0;
   margin-right: 0.5em;
+  color: #A6D261;
 }
 body.console .message {
   margin: 0;
   padding: 0;
   display: inline;
+  color: #CEA75D;
 }
 body.console .event{
   padding: 0;
