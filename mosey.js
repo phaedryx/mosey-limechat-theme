@@ -18,19 +18,13 @@ function markDuplicateTimestamp(node) {
   }  
 }
 
-// limechat doesn't mark topic event messages as topic types
-// and some other type inconsistencies
-function markEvent(node) {
-  if(node.className.includes("event")) {
-    node.setAttribute("type", "event")
-  }
-  markTopicEvent(node);
-}
-
+// because limechat doesn't mark topic events or their
+// messages as topic types and I think they should be
 function markTopicEvent(node) {
-  if(node.getAttribute("type") == "event") {
+  if(node.className.includes("event")) {
     var message_node = node.lastChild;
     if(message_node.innerText.startsWith("Topic")) {
+      node.setAttribute("type", "topic");
       message_node.setAttribute("type", "topic");
     }
   }
@@ -44,20 +38,21 @@ function createTopic() {
 }
 
 function doTopic(node) {
+  markTopicEvent(node);
   var topic = document.getElementById('topic') || createTopic();
   var message_node = node.lastChild;
   if(message_node.getAttribute("type") == "topic") {
-    topic.innerText = message_node.innerText.match(/opic: (.*)/)[1];
+    topic.innerText = message_node.innerText.match(/opic: (.*)$/)[1];
   }
 }
 
 function processNode(ev) {
-  // TODO: differentiate between the message panel and the console panel
-  // fix some bugs
+  // TODO: fix topic bugs
   var inserted_node = ev.target;
-  markDuplicateTimestamp(inserted_node);
-  markEvent(inserted_node);
-  doTopic(inserted_node);
+  if(document.body.className.includes("normal")) {
+    markDuplicateTimestamp(inserted_node);
+    doTopic(inserted_node);
+  }
 }
 
 document.addEventListener("DOMNodeInserted", processNode, false);
