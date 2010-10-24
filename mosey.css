@@ -110,7 +110,7 @@ body.console .line {
   padding: 0;
 }
 body.console .line[highlight=true] {
-  color: #FFD36A;
+  color: #FFD36A  ;
 }
 body.console .place {
   color: #74ABCF;
@@ -139,6 +139,8 @@ body.console .event{
   margin: 0;
   height: 16px;
   width: 100%;
+  overflow: hidden;
+  cursor: pointer;
   position: fixed;
   top: 0;
   text-align: center;

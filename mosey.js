@@ -13,13 +13,12 @@ String.prototype.includes = function(str) {
 function markDuplicateTimestamp(node) {
   var prev_time_node = node.previousSibling.firstChild;
   var curr_time_node = node.firstChild;
-  if(prev_time_node.innerHTML == curr_time_node.innerHTML) { 
+  if(prev_time_node.innerHTML == curr_time_node.innerHTML)
     curr_time_node.className += " duptime";
-  }  
 }
 
-// because limechat doesn't mark topic events or their
-// messages as topic types and I think they should be
+// limechat doesn't mark topic events or their messages
+// as topic types and I think they should be
 function markTopicEvent(node) {
   if(node.className.includes("event")) {
     var message_node = node.lastChild;
@@ -30,10 +29,23 @@ function markTopicEvent(node) {
   }
 }
 
+function toggleEvents() {
+  var elements = document.getElementsByClassName("event");
+  for(i in elements) {
+    if(elements[i].style.display == "none")
+      elements[i].style.display = "block";
+    else
+      elements[i].style.display = "none";
+  }
+}
+
 function createTopic() {
   topic = document.createElement('div');
   topic.id = "topic";
   document.body.appendChild(topic);
+  topic.onclick = function () {
+    toggleEvents();
+  }
   return topic;
 }
 
