@@ -103,7 +103,7 @@ body.console {
   background-color: #222;
 }
 body.console a {
-  color: #CC7833;
+  color: #4785C2;
 }
 body.console .line {
   border: none;
@@ -113,18 +113,18 @@ body.console .line[highlight=true] {
   color: #FFD36A  ;
 }
 body.console .place {
-  color: #74ABCF;
+  color: #C28547;
 }
 body.console .sender {
   padding: 0;
   margin-right: 0.5em;
-  color: #A6D261;
+  color: #C2C247;
 }
 body.console .message {
   margin: 0;
   padding: 0;
   display: inline;
-  color: #CEA75D;
+  color: #47C247;
 }
 body.console .event{
   padding: 0;
