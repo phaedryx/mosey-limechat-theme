@@ -110,10 +110,13 @@ body.console .line {
   padding: 0;
 }
 body.console .line[highlight=true] {
-  color: #FFD36A  ;
+  color: #FFD36A;
 }
 body.console .place {
   color: #C28547;
+}
+body.console .highlight {
+  color: #5B91C8;
 }
 body.console .sender {
   padding: 0;
