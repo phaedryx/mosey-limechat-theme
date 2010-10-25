@@ -51,8 +51,8 @@ a:hover {
   border-right: 5px solid #666;
 }
 .message {
-  margin-left: 98px;
-  margin-right: 50px;
+  margin-left: 8em;
+  margin-right: 5em;
   display: block;
 }
 .url { word-break: break-all; }
@@ -73,7 +73,7 @@ a:hover {
 .time {
   float: right;
   text-align: left;
-  width: 40px;
+  width: 4em;
 	color: #666;
 }
 .duptime {
@@ -83,7 +83,7 @@ a:hover {
 body.normal .sender {
   overflow: hidden;
   word-wrap: normal;
-  width: 85px;
+  width: 7em;
   padding-left: 5px;
   padding-right: 5px;
   float: left;
