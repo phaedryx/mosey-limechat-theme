@@ -31,12 +31,8 @@ function markTopicEvent(node) {
 
 function toggleEvents() {
   var elements = document.getElementsByClassName("event");
-  for(i in elements) {
-    if(elements[i].style.display == "none")
-      elements[i].style.display = "block";
-    else
-      elements[i].style.display = "none";
-  }
+  for(i in elements)
+    elements[i].style.display = (elements[i].style.display != 'none' ? 'none' : 'block');
 }
 
 function createTopic() {
@@ -58,12 +54,17 @@ function doTopic(node) {
   }
 }
 
+function doInlineImages() {
+  //TODO: better handling of inline images
+}
+
 function processNode(ev) {
   // TODO: fix topic bugs
   var inserted_node = ev.target;
   if(document.body.className.includes("normal")) {
     markDuplicateTimestamp(inserted_node);
     doTopic(inserted_node);
+    doInlineImages();
   }
 }
 
