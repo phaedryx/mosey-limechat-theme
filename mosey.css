@@ -15,7 +15,7 @@ html {
 body { margin: 0; padding: 0; }
 
 /* the html tag has these classes and attributes too */
-body.normal { color: #333; margin-top: 20px;}
+body.normal { color: #333; margin-top: 0.5em; }
 body[type=channel] {}
 body[type=talk] {}
 body[type=console] {}
@@ -31,9 +31,9 @@ a:hover {
 }
 
 /* lines */
-.line { 
-  border-left: 5px solid #CCC; 
-  border-right: 5px solid #CCC;
+.line {
+  border-left: 0.5em solid #CCC;
+  border-right: 0.5em solid #CCC;
   padding: 0;
   margin: 0;
 }
@@ -47,18 +47,18 @@ a:hover {
   content: ""
 }
 .line[highlight=true] {
-  border-left: 5px solid #666;
-  border-right: 5px solid #666;
+  border-left: 0.5em solid #666;
+  border-right: 0.5em solid #666;
 }
 .message {
-  margin-left: 8em;
+  margin-left: 9em;
   margin-right: 5em;
   display: block;
 }
 .url { word-break: break-all; }
-.address { 
-  text-decoration: underline; 
-  word-break: break-all; 
+.address {
+  text-decoration: underline;
+  word-break: break-all;
 }
 .highlight {
   font-weight: bold;
@@ -84,9 +84,9 @@ a:hover {
 body.normal .sender {
   overflow: hidden;
   word-wrap: normal;
-  width: 7em;
-  padding-left: 5px;
-  padding-right: 5px;
+  width: 8em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
   float: left;
   text-align: right;
   font-weight: bold;
@@ -94,13 +94,13 @@ body.normal .sender {
 .sender[type=myself] {
   color: #F18909;
 }
-.sender[type=normal] { 
+.sender[type=normal] {
   color: #679F41;
 }
 
 body.console {
   font-family: "Meslo", "Menlo", "Courier", monospace;
-  padding: 0px 12px;
+  padding: 0 1.25em;
   background-color: #222;
 }
 body.console a {
@@ -139,13 +139,22 @@ body.console .event{
   border-bottom: 1px solid #999;
   top-color: #FFF;
   bottom-color: #EEE;
-  padding: 2px 0;
+  padding: 0.25em 0;
   margin: 0;
-  height: 16px;
+  min-height: 0.5em;
   width: 100%;
   overflow: hidden;
   cursor: pointer;
   position: fixed;
   top: 0;
   text-align: center;
+}
+
+#topic {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s linear;
+}
+
+#topic:hover {
+  opacity: 0.8;
 }

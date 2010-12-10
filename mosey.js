@@ -10,61 +10,90 @@ String.prototype.includes = function(str) {
   return this.indexOf(str) >= 0;
 }
 
-function markDuplicateTimestamp(node) {
+function doTimestamp(node) {
   var prev_time_node = node.previousSibling.firstChild;
   var curr_time_node = node.firstChild;
-  if(prev_time_node.innerHTML == curr_time_node.innerHTML)
-    curr_time_node.className += " duptime";
-}
-
-// limechat doesn't mark topic events or their messages
-// as topic types and I think they should be
-function markTopicEvent(node) {
-  if(node.className.includes("event")) {
-    var message_node = node.lastChild;
-    if(message_node.innerText.startsWith("Topic")) {
-      node.setAttribute("type", "topic");
-      message_node.setAttribute("type", "topic");
+  if (prev_time_node.className.includes("time") && curr_time_node.className.includes("time")) {
+    if (prev_time_node.innerHTML == curr_time_node.innerHTML) {
+      curr_time_node.className += " duptime";
     }
   }
 }
 
+function findCssRule(rule)
+{
+  for (var i = 0; i < document.styleSheets.length; ++i) {
+    for (var j = 0; j < document.styleSheets[i].cssRules.length; ++j) {
+      if (document.styleSheets[i].cssRules[j].type == window.CSSRule.STYLE_RULE &&
+	      document.styleSheets[i].cssRules[j].selectorText == rule) {
+        return document.styleSheets[i].cssRules[j];
+      }
+    }
+  }
+  return null;
+}
+
+// Default to hiding the events
+var showEvents = false;
 function toggleEvents() {
-  var elements = document.getElementsByClassName("event");
-  for(i in elements) {
-    if(elements[i].style.display == "none")
-      elements[i].style.display = "block";
-    else
-      elements[i].style.display = "none";
+  showEvents = !showEvents;
+  updateEvents();
+}
+function updateEvents() {
+  var css = findCssRule('.event');
+  if (css != null) {
+    css.style.display = showEvents ? 'block' : 'none';
+  }
+}
+function doEvent(node) {
+  if (node.className.includes("event")) {
+    updateEvent(node);
   }
 }
 
-function createTopic() {
-  topic = document.createElement('div');
-  topic.id = "topic";
-  document.body.appendChild(topic);
-  topic.onclick = function () {
-    toggleEvents();
+function createTopicNode() {
+  // Only create the topic node once!
+  var topic = document.getElementById('topic');
+  if (topic == null) {
+    if (document.body.getAttribute("type") == "channel" ||
+        document.body.getAttribute("type") == "talk") {
+      topic = document.createElement('div');
+      topic.id = "topic";
+      document.body.appendChild(topic);
+    }
+    if (document.body.getAttribute("type") == "talk") {
+      setTopic("Private Chat");
+    }
   }
-  return topic;
+  topic.onclick = function() { toggleEvents(); }
+  // Hide or show all events that were created before code was run
+  updateEvents();
 }
-
+function setTopic(topic) {
+  	document.getElementById('topic').innerText = topic;
+}
 function doTopic(node) {
-  markTopicEvent(node);
-  var topic = document.getElementById('topic') || createTopic();
-  var message_node = node.lastChild;
-  if(message_node.getAttribute("type") == "topic") {
-    topic.innerText = message_node.innerText.match(/opic: (.*)$/)[1];
+  // limechat doesn't mark topic events or their messages
+  // as topic types and I think they should be
+  if (node.className.includes("event")) {
+    var message_node = node.lastChild;
+    if (message_node.getAttribute("type") == "topic" ||
+      message_node.innerText.startsWith("Topic: ")) {
+	    setTopic(message_node.innerText.match(/opic: (.*)$/)[1]);
+    }
   }
 }
 
 function processNode(ev) {
-  // TODO: fix topic bugs
-  var inserted_node = ev.target;
-  if(document.body.className.includes("normal")) {
-    markDuplicateTimestamp(inserted_node);
-    doTopic(inserted_node);
+  if (document.body.getAttribute("type") == "channel") {
+    var node = ev.target;
+    doTimestamp(node);
+    doTopic(node);
+    doEvent(node);
   }
 }
 
 document.addEventListener("DOMNodeInserted", processNode, false);
+// Not sure why DOMContentLoaded isn't working. Just call the function directly
+// document.addEventListener("DOMContentLoaded", createTopicNode, false);
+createTopicNode();
