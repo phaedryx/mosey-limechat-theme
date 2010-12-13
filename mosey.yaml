@@ -1,7 +1,7 @@
 #-----------------------------------------------------------------------------
 #  A limechat theme by Tad Thorley
 #-----------------------------------------------------------------------------
-  
+
 log-view:
   nickname-format: "%n"
   scroller-highlight-color: "#666"
@@ -32,7 +32,8 @@ server-tree:
   font-size: 12.0
   background-color: "#DDE4EC"
   highlight:
-    color: "#286FCE"
+    color: "#F18909"
+    font-weight: "bold"
   newtalk:
     font-weight: "bold"
   unread:
