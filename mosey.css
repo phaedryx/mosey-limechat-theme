@@ -96,11 +96,7 @@ body.normal .sender {
 .sender[type=normal] { 
   color: #679F41;
 }
-.inlineimage {
-  padding: 0;
-  margin: 0.5em 0;
-  display: none;
-}
+
 body.console {
   font-family: "Meslo", "Menlo", "Courier", monospace;
   padding: 0px 12px;
